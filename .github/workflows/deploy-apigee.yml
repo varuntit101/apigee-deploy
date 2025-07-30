@@ -34,7 +34,7 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
 
       - name: Configure gcloud
-        run: gcloud config set project $(jq -r .project_id <<< "${{ secrets.GCP_SA_KEY }}")
+        run: gcloud config set project '${{ secrets.APIGEE_ORG }}'
 
       - name: Get Apigee Bearer Token
         id: auth
