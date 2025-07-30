@@ -41,6 +41,15 @@ jobs:
         run: |
           echo "BEARER_TOKEN=$(gcloud auth print-access-token)" >> $GITHUB_ENV
 
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
       - name: Deploy to Apigee
         run: |
           cd varun-test/src/gateway/varun-test-v1
