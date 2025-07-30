@@ -43,7 +43,7 @@ jobs:
 
       - name: Deploy to Apigee
         run: |
-          cd src/gateway/Mock-v1
+          cd src/gateway/varun-test-v1
           mvn install -Peval \
             -Dorg='${{ vars.APIGEE_ORG }}' \
             -Denv='${{ vars.APIGEE_ENV }}' \
