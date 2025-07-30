@@ -34,7 +34,7 @@ jobs:
         uses: google-github-actions/setup-gcloud@v2
 
       - name: Configure gcloud
-        run: gcloud config set project '${{ secrets.APIGEE_ORG }}'
+        run: gcloud config set project '${{ APIGEE_ORG }}'
 
       - name: Get Apigee Bearer Token
         id: auth
@@ -45,6 +45,6 @@ jobs:
         run: |
           cd src/gateway/Mock-v1
           mvn install -Peval \
-            -Dorg=${{ secrets.APIGEE_ORG }} \
-            -Denv=${{ secrets.APIGEE_ENV }} \
+            -Dorg=${{ APIGEE_ORG }} \
+            -Denv=${{ APIGEE_ENV }} \
             -Dbearer="$BEARER_TOKEN"
